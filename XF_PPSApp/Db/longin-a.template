@@ -1,0 +1,36 @@
+#read double word from $(PLC) at $(DINT)
+record(longin, "$(Sys){$(Dev)}$(Array)[$(DINT)]-I_")
+{
+    field(SCAN, "I/O Intr")
+    field(DESC, "$(PLC) $(Array)[$(DINT)] raw DINT element")
+    field(DTYP, "stream")
+    field(INP, "@StreamPLC.proto StreamReq($(ADDRS)) $(PLC)")
+    field(FLNK, "$(Sys){$(Dev)}$(Array)[$(DINT)]-fo_")
+}
+
+record(fanout, "$(Sys){$(Dev)}$(Array)[$(DINT)]-fo_")
+{
+    field(DESC, "$(PLC) $(Array)[$(DINT)] fanout")
+    field(LNK1, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte0-I_")
+    field(LNK2, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte1-I_")
+    field(LNK3, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte2-I_")
+    field(LNK4, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte3-I_")
+}
+
+record(stringin,"$(Sys){$(Dev)}$(Array)[$(DINT)]-Str")
+{
+    field(DESC, "Individual Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys){$(Dev)}$(Array)[$(DINT)]-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys){$(Dev)}$(Array)[$(DINT)]-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys){$(Dev)}$(Array)[$(DINT)]-Str PP")
+    field(OUT, "$(Sys){$(Dev)}$(Array)[$(DINT)]-I_.DESC")
+}

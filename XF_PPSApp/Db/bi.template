@@ -1,0 +1,26 @@
+# bi record template for register inputs
+record(bi,"$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit$(Bit)-Sts") {
+    field(DESC, "Extract bit $(Bit) from Byte $(Byte) LE of $(Array) DINT $(DINT)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)-I_.B$(Bit)")
+}
+
+record(stringin,"$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit$(Bit)-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit$(Bit)-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit$(Bit)-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit$(Bit)-Str PP")
+    field(OUT, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit$(Bit)-Sts.DESC")
+}
+

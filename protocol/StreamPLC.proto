@@ -1,0 +1,22 @@
+Terminator = CR LF;
+
+ReplyTimeout = 1000;
+LockTimeout = 5000;
+WriteTimeout = 500;
+ReadTimeout = 100;
+
+#in: RQ<index>:<8 chars represent 4 bytes of DINT> 
+StreamReq {
+    in "RQ\$1:%08x";
+}
+
+#in: RQ<index>:<4 chars represent 2 bytes of INT>
+StreamFirstWordReq {
+    in "RQ\$1:%04x";
+}
+
+#in: RQ<index>:<4 chars represent 2 bytes of INT>
+StreamSecondWordReq {
+    in "RQ\$1:%*04x%04x";
+}
+

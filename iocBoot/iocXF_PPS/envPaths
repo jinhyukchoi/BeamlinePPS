@@ -1,0 +1,3 @@
+epicsEnvSet("IOC","iocXF_PPS")
+epicsEnvSet("TOP","/epics/iocs/XF_PPS")
+epicsEnvSet("EPICS_BASE","/usr/lib/epics")

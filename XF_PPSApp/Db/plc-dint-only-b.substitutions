@@ -1,0 +1,7 @@
+# Data is received from asyn device in arrays of double words (DINTs)
+# Parse the element in longin, no macro definition
+# Each DINT can have a grouping label for encoded data
+file longin-only-b.template {
+    pattern { "" }
+            { "" }
+}

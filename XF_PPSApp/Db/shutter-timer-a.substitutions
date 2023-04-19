@@ -1,0 +1,7 @@
+# Data is received from asyn device in arrays of words (INTs)
+# Parse the element in longin, no macro definition
+# Each INT can have a grouping label for encoded data
+file shutter-timer-a.template {
+    pattern { "" }
+            { "" }
+}

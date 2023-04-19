@@ -1,0 +1,30 @@
+record(mbbiDirect, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)-I_")
+{
+  field(DESC, "Expand $(Array) DINT $(DINT) byte $(Byte) LE")
+  field(SCAN, "Passive")
+  field(DTYP, "Raw Soft Channel")
+  field(SHFT, "$(SHFT)")
+  field(INP, "$(Sys){$(Dev)}$(Array)[$(DINT)]-I_")
+  field(NOBT, "8")
+  field(FLNK, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)-fo_")
+}
+
+record(fanout, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)-fo_")
+{
+    field(DESC, "$(PLC) $(Array)[$(DINT)] Byte $(Byte) fanout")
+    field(LNK1, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit0-Sts")
+    field(LNK2, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit1-Sts")
+    field(LNK3, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit2-Sts")
+    field(LNK4, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit3-Sts")
+    field(LNK5, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)-fo__")
+}
+
+record(fanout, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)-fo__")
+{
+    field(DESC, "$(PLC) $(Array)[$(DINT)] Byte $(Byte) fanout")
+    field(LNK1, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit4-Sts")
+    field(LNK2, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit5-Sts")
+    field(LNK3, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit6-Sts")
+    field(LNK4, "$(Sys){$(Dev)}$(Array)[$(DINT)]_Byte$(Byte)_Bit7-Sts")
+}
+

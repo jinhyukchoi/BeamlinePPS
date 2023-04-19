@@ -1,0 +1,38 @@
+#read double word from $(PLC,undefined) at $(DINT,undefined)
+record(longin, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-I_")
+{
+    field(SCAN, "I/O Intr")
+    field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] raw DINT element")
+    field(DTYP, "stream")
+    field(INP, "@StreamPLC.proto StreamReq($(DINT,undefined)) $(PLC,undefined)")
+#   field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-fo_")
+}
+
+# record(fanout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-fo_")
+# {
+#     field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] fanout")
+#     field(LNK1, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-I_")
+#     field(LNK2, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-I_")
+#     field(LNK3, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-I_")
+#     field(LNK4, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-I_")
+# }
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-Str")
+{
+    field(DESC, "Individual Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-I_.DESC")
+}
+
+

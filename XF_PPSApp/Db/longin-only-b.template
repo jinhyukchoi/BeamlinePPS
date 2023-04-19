@@ -1,0 +1,26 @@
+#read double word from $(PLC) at $(DINT)
+record(longin, "$(Sys){$(Dev)}$(Array)[$(DINT)]-I_")
+{
+    field(SCAN, "I/O Intr")
+    field(DESC, "$(PLC) $(Array)[$(DINT)] raw DINT element")
+    field(DTYP, "stream")
+    field(INP, "@StreamPLC.proto StreamReq($(DINT)) $(PLC)")
+}
+
+record(stringin,"$(Sys){$(Dev)}$(Array)[$(DINT)]-Str")
+{
+    field(DESC, "Individual Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys){$(Dev)}$(Array)[$(DINT)]-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys){$(Dev)}$(Array)[$(DINT)]-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys){$(Dev)}$(Array)[$(DINT)]-Str PP")
+    field(OUT, "$(Sys){$(Dev)}$(Array)[$(DINT)]-I_.DESC")
+}

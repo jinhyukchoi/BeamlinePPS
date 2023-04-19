@@ -1,0 +1,40 @@
+#read first word from $(PLC,undefined) at $(DINT,undefined)
+record(longin, "$(Sys,undefined){$(Dev,undefined)}[$(DINT,undefined)]Timer1-I")
+{
+    field(SCAN, "I/O Intr")
+    field(DESC, "$(PLC,undefined) [$(DINT,undefined)] chain A close timer ")
+    field(DTYP, "stream")
+    field(INP, "@StreamPLC.proto StreamFirstWordReq($(ADDRS,undefined)) $(PLC,undefined)")
+}
+
+#read second word from $(PLC,undefined) at $(DINT,undefined) 
+record(longin, "$(Sys,undefined){$(Dev,undefined)}[$(DINT,undefined)]Timer2-I")
+{
+    field(SCAN, "I/O Intr")
+    field(DESC, "$(PLC,undefined) [$(DINT,undefined)] chain A open timer")
+    field(DTYP, "stream")
+    field(INP, "@StreamPLC.proto StreamSecondWordReq($(ADDRS,undefined)) $(PLC,undefined)")
+}
+
+# Close timer calc
+record(calc, "$(Sys,undefined){$(Dev,undefined)}[$(DINT,undefined)]Timer1-Calc_")
+{
+    field(DESC, "Shutter close timer calc")
+    field(SCAN, "1 second")
+    field(PREC, "3")
+    field(INPA, "$(Sys,undefined){$(Dev,undefined)}[$(DINT,undefined)]Timer1-I NPP MS")
+    field(INPB, "100")
+    field(CALC, "A/B")
+}
+
+# Open timer calc
+record(calc, "$(Sys,undefined){$(Dev,undefined)}[$(DINT,undefined)]Timer2-Calc_")
+{
+    field(DESC, "Shutter open timer calc")
+    field(SCAN, "1 second")
+    field(PREC, "3")
+    field(INPA, "$(Sys,undefined){$(Dev,undefined)}[$(DINT,undefined)]Timer2-I NPP MS")
+    field(INPB, "100")
+    field(CALC, "A/B")
+}
+

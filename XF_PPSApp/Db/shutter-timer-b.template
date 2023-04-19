@@ -1,0 +1,20 @@
+#read from $(PLC) at $(DINT)
+record(longin, "$(Sys){$(Dev)}[$(DINT)]Timer-I")
+{
+    field(SCAN, "I/O Intr")
+    field(DESC, "$(PLC) [$(DINT)] chain B timer")
+    field(DTYP, "stream")
+    field(INP, "@StreamPLC.proto StreamReq($(DINT)) $(PLC)")
+}
+
+# Open/Close timer calc
+record(calc, "$(Sys){$(Dev)}[$(DINT)]Timer-Calc_")
+{
+    field(DESC, "Shutter open/close timer calc")
+    field(SCAN, "1 second")
+    field(PREC, "3")
+    field(INPA, "$(Sys){$(Dev)}[$(DINT)]Timer-I NPP MS")
+    field(INPB, "1000")
+    field(CALC, "A/B")
+}
+

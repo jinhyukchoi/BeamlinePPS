@@ -1,0 +1,988 @@
+#read double word from $(PLC,undefined) at $(DINT,undefined)
+record(longin, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-I_")
+{
+    field(SCAN, "I/O Intr")
+    field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] raw DINT element")
+    field(DTYP, "stream")
+    field(INP, "@StreamPLC.proto StreamReq($(DINT,undefined)) $(PLC,undefined)")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-fo_")
+}
+
+record(fanout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-fo_")
+{
+    field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] fanout")
+    field(LNK1, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-I_")
+    field(LNK2, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-I_")
+    field(LNK3, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-I_")
+    field(LNK4, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-I_")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-Str")
+{
+    field(DESC, "Individual Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-I_.DESC")
+}
+record(mbbiDirect, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-I_")
+{
+  field(DESC, "Expand $(Array,undefined) DINT $(DINT,undefined) byte 0 LE")
+  field(SCAN, "Passive")
+  field(DTYP, "Raw Soft Channel")
+  field(SHFT, "0")
+  field(INP, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-I_")
+  field(NOBT, "8")
+  field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-fo_")
+}
+
+record(fanout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-fo_")
+{
+    field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] Byte 0 fanout")
+    field(LNK1, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit0-Sts")
+    field(LNK2, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit1-Sts")
+    field(LNK3, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit2-Sts")
+    field(LNK4, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit3-Sts")
+    field(LNK5, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-fo__")
+}
+
+record(fanout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-fo__")
+{
+    field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] Byte 0 fanout")
+    field(LNK1, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit4-Sts")
+    field(LNK2, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit5-Sts")
+    field(LNK3, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit6-Sts")
+    field(LNK4, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit7-Sts")
+}
+
+record(mbbiDirect, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-I_")
+{
+  field(DESC, "Expand $(Array,undefined) DINT $(DINT,undefined) byte 1 LE")
+  field(SCAN, "Passive")
+  field(DTYP, "Raw Soft Channel")
+  field(SHFT, "8")
+  field(INP, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-I_")
+  field(NOBT, "8")
+  field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-fo_")
+}
+
+record(fanout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-fo_")
+{
+    field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] Byte 1 fanout")
+    field(LNK1, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit0-Sts")
+    field(LNK2, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit1-Sts")
+    field(LNK3, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit2-Sts")
+    field(LNK4, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit3-Sts")
+    field(LNK5, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-fo__")
+}
+
+record(fanout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-fo__")
+{
+    field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] Byte 1 fanout")
+    field(LNK1, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit4-Sts")
+    field(LNK2, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit5-Sts")
+    field(LNK3, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit6-Sts")
+    field(LNK4, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit7-Sts")
+}
+
+record(mbbiDirect, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-I_")
+{
+  field(DESC, "Expand $(Array,undefined) DINT $(DINT,undefined) byte 2 LE")
+  field(SCAN, "Passive")
+  field(DTYP, "Raw Soft Channel")
+  field(SHFT, "16")
+  field(INP, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-I_")
+  field(NOBT, "8")
+  field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-fo_")
+}
+
+record(fanout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-fo_")
+{
+    field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] Byte 2 fanout")
+    field(LNK1, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit0-Sts")
+    field(LNK2, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit1-Sts")
+    field(LNK3, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit2-Sts")
+    field(LNK4, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit3-Sts")
+    field(LNK5, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-fo__")
+}
+
+record(fanout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-fo__")
+{
+    field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] Byte 2 fanout")
+    field(LNK1, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit4-Sts")
+    field(LNK2, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit5-Sts")
+    field(LNK3, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit6-Sts")
+    field(LNK4, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit7-Sts")
+}
+
+record(mbbiDirect, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-I_")
+{
+  field(DESC, "Expand $(Array,undefined) DINT $(DINT,undefined) byte 3 LE")
+  field(SCAN, "Passive")
+  field(DTYP, "Raw Soft Channel")
+  field(SHFT, "24")
+  field(INP, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]-I_")
+  field(NOBT, "8")
+  field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-fo_")
+}
+
+record(fanout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-fo_")
+{
+    field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] Byte 3 fanout")
+    field(LNK1, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit0-Sts")
+    field(LNK2, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit1-Sts")
+    field(LNK3, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit2-Sts")
+    field(LNK4, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit3-Sts")
+    field(LNK5, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-fo__")
+}
+
+record(fanout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-fo__")
+{
+    field(DESC, "$(PLC,undefined) $(Array,undefined)[$(DINT,undefined)] Byte 3 fanout")
+    field(LNK1, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit4-Sts")
+    field(LNK2, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit5-Sts")
+    field(LNK3, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit6-Sts")
+    field(LNK4, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit7-Sts")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit0-Sts") {
+    field(DESC, "Extract bit 0 from Byte 0 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-I_.B0")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit0-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit0-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit0-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit0-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit0-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit1-Sts") {
+    field(DESC, "Extract bit 1 from Byte 0 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-I_.B1")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit1-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit1-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit1-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit1-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit1-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit2-Sts") {
+    field(DESC, "Extract bit 2 from Byte 0 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-I_.B2")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit2-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit2-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit2-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit2-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit2-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit3-Sts") {
+    field(DESC, "Extract bit 3 from Byte 0 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-I_.B3")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit3-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit3-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit3-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit3-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit3-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit4-Sts") {
+    field(DESC, "Extract bit 4 from Byte 0 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-I_.B4")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit4-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit4-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit4-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit4-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit4-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit5-Sts") {
+    field(DESC, "Extract bit 5 from Byte 0 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-I_.B5")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit5-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit5-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit5-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit5-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit5-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit6-Sts") {
+    field(DESC, "Extract bit 6 from Byte 0 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-I_.B6")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit6-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit6-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit6-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit6-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit6-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit7-Sts") {
+    field(DESC, "Extract bit 7 from Byte 0 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0-I_.B7")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit7-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit7-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit7-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit7-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte0_Bit7-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit0-Sts") {
+    field(DESC, "Extract bit 0 from Byte 1 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-I_.B0")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit0-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit0-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit0-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit0-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit0-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit1-Sts") {
+    field(DESC, "Extract bit 1 from Byte 1 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-I_.B1")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit1-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit1-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit1-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit1-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit1-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit2-Sts") {
+    field(DESC, "Extract bit 2 from Byte 1 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-I_.B2")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit2-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit2-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit2-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit2-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit2-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit3-Sts") {
+    field(DESC, "Extract bit 3 from Byte 1 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-I_.B3")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit3-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit3-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit3-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit3-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit3-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit4-Sts") {
+    field(DESC, "Extract bit 4 from Byte 1 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-I_.B4")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit4-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit4-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit4-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit4-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit4-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit5-Sts") {
+    field(DESC, "Extract bit 5 from Byte 1 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-I_.B5")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit5-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit5-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit5-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit5-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit5-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit6-Sts") {
+    field(DESC, "Extract bit 6 from Byte 1 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-I_.B6")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit6-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit6-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit6-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit6-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit6-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit7-Sts") {
+    field(DESC, "Extract bit 7 from Byte 1 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1-I_.B7")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit7-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit7-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit7-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit7-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte1_Bit7-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit0-Sts") {
+    field(DESC, "Extract bit 0 from Byte 2 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-I_.B0")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit0-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit0-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit0-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit0-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit0-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit1-Sts") {
+    field(DESC, "Extract bit 1 from Byte 2 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-I_.B1")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit1-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit1-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit1-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit1-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit1-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit2-Sts") {
+    field(DESC, "Extract bit 2 from Byte 2 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-I_.B2")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit2-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit2-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit2-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit2-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit2-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit3-Sts") {
+    field(DESC, "Extract bit 3 from Byte 2 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-I_.B3")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit3-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit3-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit3-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit3-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit3-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit4-Sts") {
+    field(DESC, "Extract bit 4 from Byte 2 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-I_.B4")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit4-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit4-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit4-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit4-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit4-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit5-Sts") {
+    field(DESC, "Extract bit 5 from Byte 2 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-I_.B5")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit5-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit5-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit5-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit5-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit5-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit6-Sts") {
+    field(DESC, "Extract bit 6 from Byte 2 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-I_.B6")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit6-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit6-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit6-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit6-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit6-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit7-Sts") {
+    field(DESC, "Extract bit 7 from Byte 2 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2-I_.B7")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit7-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit7-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit7-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit7-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte2_Bit7-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit0-Sts") {
+    field(DESC, "Extract bit 0 from Byte 3 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-I_.B0")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit0-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit0-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit0-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit0-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit0-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit1-Sts") {
+    field(DESC, "Extract bit 1 from Byte 3 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-I_.B1")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit1-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit1-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit1-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit1-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit1-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit2-Sts") {
+    field(DESC, "Extract bit 2 from Byte 3 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-I_.B2")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit2-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit2-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit2-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit2-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit2-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit3-Sts") {
+    field(DESC, "Extract bit 3 from Byte 3 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-I_.B3")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit3-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit3-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit3-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit3-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit3-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit4-Sts") {
+    field(DESC, "Extract bit 4 from Byte 3 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-I_.B4")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit4-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit4-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit4-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit4-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit4-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit5-Sts") {
+    field(DESC, "Extract bit 5 from Byte 3 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-I_.B5")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit5-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit5-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit5-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit5-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit5-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit6-Sts") {
+    field(DESC, "Extract bit 6 from Byte 3 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-I_.B6")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit6-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit6-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit6-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit6-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit6-Sts.DESC")
+}
+
+# bi record template for register inputs
+record(bi,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit7-Sts") {
+    field(DESC, "Extract bit 7 from Byte 3 LE of $(Array,undefined) DINT $(DINT,undefined)")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    field(INP,  "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3-I_.B7")
+}
+
+record(stringin,"$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit7-Str")
+{
+    field(DESC, "Individual Bit Label")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
+    field(FLNK, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit7-Str_")
+    field(ASG,  "PPSEXPERT")
+    info(autosaveFields_pass1, "VAL")
+}
+
+record(stringout, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit7-Str_")
+{
+    field(DESC, "Aux DESC pass")
+    field(OMSL, "closed_loop")
+    field(DOL, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit7-Str PP")
+    field(OUT, "$(Sys,undefined){$(Dev,undefined)}$(Array,undefined)[$(DINT,undefined)]_Byte3_Bit7-Sts.DESC")
+}
+

@@ -1,0 +1,6 @@
+NAME=XF_PPS
+USER=softioc
+
+PORT=4054
+
+HOST=ppsioc-cr-hp
